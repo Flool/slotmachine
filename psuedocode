@@ -1,0 +1,49 @@
+On open:
+  show instructions/play button
+  on play button click
+    init()
+      set slots and base money
+      
+  
+ 
+On handle pull(button click):
+  subtract bet money from total
+  
+  spin all slots (Math.random)
+    delay 2nd/3rd slots with setTimeout
+    store randomized values in array
+
+  store slot values in array or object
+
+  render()
+    update array to put in DOM
+
+
+  checkForWin()
+    if win:
+      display win message
+      give player money based on symbol
+    if lose:
+      display lose message
+
+On money = 0:
+  end/reset 
+
+
+
+icebox:
+  animations for slots, handle, betting
+  music
+  flashing lights
+  betting different amounts
+  player names
+  high scores
+  options
+  reset button
+  9 slots instead of 3
+
+
+    
+
+
+

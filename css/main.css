@@ -1,9 +1,9 @@
 td{
   margin: 0 auto;
   padding: 0;
-  width: 200px;
-  height: 200px;
-  max-width: 200px;
+  width: 400px;
+  height: 400px;
+  max-width: 400px;
   outline: 3px solid black; 
   text-align: center;
   font-size: 30px;

@@ -1,21 +1,22 @@
 td{
-  margin: 0 auto;
-  padding: 0;
+  margin: 15px 20px;
   width: 400px;
   height: 400px;
   max-width: 400px;
-  outline: 3px solid black; 
+  border: 1.5px solid black; 
   text-align: center;
   font-size: 30px;
+  border-radius: 30px;
 }
 
+
 tr{
-  
+  margin: 100px;
 }
 table{
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
 }
 #btn{
   display: flex;

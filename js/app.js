@@ -48,7 +48,7 @@ function playSound(name){
 
 function init(){
   slots = [6,6,6]
-  money = 1000;
+  money = 25;
   bet = 0;
   render();
 }
@@ -102,8 +102,8 @@ function render(){
     }
     // $(`td.${idx+1}`).text(slot);
   })
-  $('p.cash').text(`Current Cash: $${money}`)
-  $('p.betM').text(`Amount Entered: $${bet*5}`)
+  $('p.cash').html(`Current Cash: <strong>$${money}</strong>`)
+  $('p.betM').html(`Credit: <strong>$${bet}</strong>`)
 
 
   if(money === 0 && bet === 0){
@@ -130,19 +130,12 @@ function randSlots(idx){
       slots[idx] = 5;
     }
 
-    // if (idx === 2 && slots[0] === slots[1]){
-    //   if(num < 7){
-    //     slots[2] = slots[1];
-    //   }
-    // }
   render();
 }
 
 function flashColor(color){
   $slots = $('td');
-  console.log($slots)
   var interval = setInterval(function(){
-    console.log($slots.css('background-color'))
     $slots.css('background-color') === 'rgb(255, 255, 255)' ? $slots.css('background-color', color) : $slots.css('background-color', 'white');
   }, 250)
 
@@ -172,6 +165,7 @@ function spinSlots(){
       playSound('quack');
       setTimeout(function(){
         clearInterval(third);
+        cheat();
         playSound('quack');
         checkWin();
       }, 1500)
@@ -183,18 +177,34 @@ function spinSlots(){
 
 function checkWin(){
   if((slots[0] === slots[1]) && (slots[1] === slots[2])){
-    money += 25*slots[0];
     playSound('win')
     flashColor(symbols[slots[0]-1].color);
-    render();
+    var amount = 15*slots[0];
+    var time = setInterval(function(){
+      money += parseInt((amount/12));
+      console.log(parseInt(amount/12))
+      render();
+    }, 250)
+    
+    setTimeout(function(){
+      clearTimeout(time)
+    }, 4000)
   }
 }
 
+function cheat(){
+  if (slots[0] === slots[1]){
+      if(Math.random() > .50){
+        slots[2] = slots[1];
+      }
+    }
+  render();
+}
 
 
 function insertCoin(){
   if (money > 0){
-  money -= 5;
+  money -= 1;
   bet += 1;
   render();
   }

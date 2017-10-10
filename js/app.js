@@ -110,12 +110,10 @@ function render(){
 
 }
 
-function spinSlots(){
+function randSlots(idx){
   var num
-  if (bet > 0){
-  slots.forEach(function(slot,idx){
-      num = Math.floor((Math.random()*12) + 1);
-    console.log(num)
+  
+    num = Math.floor((Math.random()*12) + 1);
 
     if (num < 5) {
       slots[idx] = 1;
@@ -128,20 +126,42 @@ function spinSlots(){
     } else if (num === 12){
       slots[idx] = 5;
     }
-  });
-  bet -= 1;
-  
-//(state[first] && (state[first] === state[second]) && (state[first] === state[third]))
-  if((slots[0] === slots[1]) && (slots[1] === slots[2])){
-    money += 25*slots[0];
-    playSound('win')
-  }
   render();
+}
+
+function spinSlots(){
+  if (bet > 0){
+    bet -= 1;
+    var first = setInterval(function(){
+      randSlots(0);
+    }, 50)
+    var second = setInterval(function(){
+      randSlots(1);
+    }, 50)
+    var third = setInterval(function(){
+      randSlots(2);
+    }, 50)
+
+  setTimeout(function(){ 
+    clearInterval(first);
+    setTimeout(function(){
+      clearInterval(second);
+      setTimeout(function(){
+        clearInterval(third);
+        checkWin();
+      }, 1500)
+    }, 1500)
+  }, 1500);
+
   }
 }
 
 function checkWin(){
-
+  if((slots[0] === slots[1]) && (slots[1] === slots[2])){
+    money += 25*slots[0];
+    playSound('win')
+    render();
+  }
 }
 
 function insertCoin(){

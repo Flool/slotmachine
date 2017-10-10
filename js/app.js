@@ -1,21 +1,26 @@
 $(function(){
 /*----- constants -----*/
-
-
-
-
-/*----- app's state (variables) -----*/
-
-slots = ['1', '2', '3'];
-symbols = [
+var slots = ['1', '2', '3'];
+var symbols = [
   {key: 'cherry', img: 'http://downloadclipart.org/do-upload/clipart/2016-06/Cute_cherries_clip_art.png' },
   {key: 'orange', img: 'http://downloadclipart.org/do-upload/clipart/2016-06/Orange_clipart_png.png' },
   {key: 'lemon', img: 'https://tr1.cbsistatic.com/hub/i/2015/05/07/a6b60bbe-f4ae-11e4-940f-14feb5cc3d2a/lemon09062012.png' },
   {key: 'pear', img: 'https://tr1.cbsistatic.com/hub/i/2015/05/07/a71cca26-f4ae-11e4-940f-14feb5cc3d2a/pear09062012.png' },
   {key: 'seven', img: 'http://clipart-library.com/img/688217.png' }
 ]
+var sounds = {
+  coin: "sounds/coinslot.wav",
+  win: "sounds/win.mp3"
+}
+
+
+
+
+/*----- app's state (variables) -----*/
+
 var money
 var bet
+var player = new Audio();
 //bet amount
 
 
@@ -26,15 +31,20 @@ var bet
 
 /*----- event listeners -----*/
 
-$('button#handle').on('click', spinSlots);
-$('button#coinSlot').on('click', insertCoin)
+$('div#handle').on('click', spinSlots);
+$('div#coinSlot').on('click', insertCoin)
 //betting 
 
 /*----- functions -----*/
 
 //init(), render(), spinSlot(), checkWin(), bet()
+function playSound(name){
+  player.src = sounds[name]
+  player.play();
+}
+
 function init(){
-  slots = [5,5,5]
+  slots = [6,6,6]
   money = 1000;
   bet = 0;
   render();
@@ -44,7 +54,6 @@ function render(){
   slots.forEach(function(slot,idx){
     $slot = $(`td.s${idx+1}`)
     child = $slot.children();
-    console.log(child)
     switch(slot){
       case 1:
         $slot.css('background-color', 'red');
@@ -73,16 +82,20 @@ function render(){
         child.attr("height", 280)
         break;
       case 5: 
+        $slot.css('background-color', 'gold');
+        child.attr("src", symbols[4].img)
+        child.attr("width", 250)
+        child.attr("height", 280)
+      case 6:
         $(`td.s${idx+1}`).css('background-color', 'gold');
         $(`td.s${idx+1}`).html("<img src='http://clipart-library.com/img/688217.png' alt='Whoops' height='325' width='325'>")
         break;
-      case 6:
+
+      default:
         $(`td.s${idx+1}`).css('background-color', 'Pink');
         $(`td.s${idx+1}`).text('Uh-Oh');
         break;
 
-      default:
-        $(`td.s${idx+1}`).text('Something Happened')
     }
     // $(`td.${idx+1}`).text(slot);
   })
@@ -121,6 +134,7 @@ function spinSlots(){
 //(state[first] && (state[first] === state[second]) && (state[first] === state[third]))
   if((slots[0] === slots[1]) && (slots[1] === slots[2])){
     money += 25*slots[0];
+    playSound('win')
   }
   render();
   }
@@ -136,6 +150,8 @@ function insertCoin(){
   bet += 1;
   render();
   }
+
+  playSound('coin')
 }
 
 

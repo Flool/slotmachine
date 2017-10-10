@@ -9,6 +9,9 @@ td{
   border-radius: 30px;
 }
 
+body{
+  background-color: #FFCC00;
+}
 
 tr{
   margin: 100px;

@@ -2,15 +2,17 @@ $(function(){
 /*----- constants -----*/
 var slots = ['1', '2', '3'];
 var symbols = [
-  {key: 'cherry', img: 'http://downloadclipart.org/do-upload/clipart/2016-06/Cute_cherries_clip_art.png' },
-  {key: 'orange', img: 'http://downloadclipart.org/do-upload/clipart/2016-06/Orange_clipart_png.png' },
-  {key: 'lemon', img: 'https://tr1.cbsistatic.com/hub/i/2015/05/07/a6b60bbe-f4ae-11e4-940f-14feb5cc3d2a/lemon09062012.png' },
-  {key: 'pear', img: 'https://tr1.cbsistatic.com/hub/i/2015/05/07/a71cca26-f4ae-11e4-940f-14feb5cc3d2a/pear09062012.png' },
-  {key: 'seven', img: 'http://clipart-library.com/img/688217.png' }
+  {color: 'red', img: 'http://downloadclipart.org/do-upload/clipart/2016-06/Cute_cherries_clip_art.png' },
+  {color: 'orange', img: 'http://downloadclipart.org/do-upload/clipart/2016-06/Orange_clipart_png.png' },
+  {color: 'yellow', img: 'https://tr1.cbsistatic.com/hub/i/2015/05/07/a6b60bbe-f4ae-11e4-940f-14feb5cc3d2a/lemon09062012.png' },
+  {color: 'green', img: 'https://tr1.cbsistatic.com/hub/i/2015/05/07/a71cca26-f4ae-11e4-940f-14feb5cc3d2a/pear09062012.png' },
+  {color: 'gold', img: 'http://clipart-library.com/img/688217.png' }
 ]
 var sounds = {
   coin: "sounds/coinslot.wav",
-  win: "sounds/win.mp3"
+  win: "sounds/win.mp3",
+  spinning: 'sounds/',
+  quack: 'sounds/quack.mp3'
 }
 
 
@@ -21,6 +23,7 @@ var sounds = {
 var money
 var bet
 var player = new Audio();
+var bgPlayer = new Audio();
 //bet amount
 
 
@@ -56,7 +59,7 @@ function render(){
     child = $slot.children();
     switch(slot){
       case 1:
-        $slot.css('background-color', 'red');
+        // $slot.css('background-color', 'red');
         child.attr("src", symbols[0].img)
         child.attr("width", 250)
         child.attr("height", 280)
@@ -64,30 +67,30 @@ function render(){
         
         break;
       case 2: 
-        $slot.css('background-color', 'orange');
+        // $slot.css('background-color', 'orange');
         child.attr("src", symbols[1].img)
         child.attr("width", 250)
         child.attr("height", 280)
         break;
       case 3: 
-        $slot.css('background-color', 'yellow');
+        // $slot.css('background-color', 'yellow');
         child.attr("src", symbols[2].img)
         child.attr("width", 250)
         child.attr("height", 280)
         break;
       case 4: 
-        $slot.css('background-color', 'green');
+        // $slot.css('background-color', 'green');
         child.attr("src", symbols[3].img)
         child.attr("width", 250)
         child.attr("height", 280)
         break;
       case 5: 
-        $slot.css('background-color', 'gold');
+        // $slot.css('background-color', 'gold');
         child.attr("src", symbols[4].img)
         child.attr("width", 250)
         child.attr("height", 280)
       case 6:
-        $(`td.s${idx+1}`).css('background-color', 'gold');
+        $(`td.s${idx+1}`).css('background-color', 'white');
         $(`td.s${idx+1}`).html("<img src='http://clipart-library.com/img/688217.png' alt='Whoops' height='325' width='325'>")
         break;
 
@@ -126,7 +129,26 @@ function randSlots(idx){
     } else if (num === 12){
       slots[idx] = 5;
     }
+
+    // if (idx === 2 && slots[0] === slots[1]){
+    //   if(num < 7){
+    //     slots[2] = slots[1];
+    //   }
+    // }
   render();
+}
+
+function flashColor(color){
+  $slots = $('td');
+  console.log($slots)
+  var interval = setInterval(function(){
+    console.log($slots.css('background-color'))
+    $slots.css('background-color') === 'rgb(255, 255, 255)' ? $slots.css('background-color', color) : $slots.css('background-color', 'white');
+  }, 250)
+
+  setTimeout(function(){
+    clearInterval(interval)
+  }, 3000)
 }
 
 function spinSlots(){
@@ -143,11 +165,14 @@ function spinSlots(){
     }, 50)
 
   setTimeout(function(){ 
+    playSound('quack');
     clearInterval(first);
     setTimeout(function(){
       clearInterval(second);
+      playSound('quack');
       setTimeout(function(){
         clearInterval(third);
+        playSound('quack');
         checkWin();
       }, 1500)
     }, 1500)
@@ -160,9 +185,12 @@ function checkWin(){
   if((slots[0] === slots[1]) && (slots[1] === slots[2])){
     money += 25*slots[0];
     playSound('win')
+    flashColor(symbols[slots[0]-1].color);
     render();
   }
 }
+
+
 
 function insertCoin(){
   if (money > 0){

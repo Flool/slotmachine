@@ -2,11 +2,11 @@ $(function(){
 /*----- constants -----*/
 var slots = ['1', '2', '3'];
 var symbols = [
-  {color: 'red', img: 'http://downloadclipart.org/do-upload/clipart/2016-06/Cute_cherries_clip_art.png' },
+  {color: 'lightred', img: 'http://downloadclipart.org/do-upload/clipart/2016-06/Cute_cherries_clip_art.png' },
   {color: 'orange', img: 'http://downloadclipart.org/do-upload/clipart/2016-06/Orange_clipart_png.png' },
   {color: 'yellow', img: 'https://tr1.cbsistatic.com/hub/i/2015/05/07/a6b60bbe-f4ae-11e4-940f-14feb5cc3d2a/lemon09062012.png' },
-  {color: 'green', img: 'https://tr1.cbsistatic.com/hub/i/2015/05/07/a71cca26-f4ae-11e4-940f-14feb5cc3d2a/pear09062012.png' },
-  {color: 'gold', img: 'http://clipart-library.com/img/688217.png' }
+  {color: 'red', img: 'http://clipart-library.com/img/688217.png' },
+  {color: 'blue', img: 'https://i.imgur.com/1I9zh7g.png' }
 ]
 var sounds = {
   coin: "sounds/coinslot.wav",
@@ -42,7 +42,12 @@ var bgPlayer = new Audio();
 
 $('div#handle').on('click', spinSlots);
 $('div#coinSlot').on('click', insertCoin);
-$('button#start').on('click', menuCheck);
+$('#start').on('click', function() {checkMenu('start')});
+$('button#instructions').on('click', function() {checkMenu('inst')});
+$('button#options').on('click', function() {checkMenu('opt')});
+$('button.back').on('click', function() {checkMenu('back')});
+
+
 //betting 
 
 /*----- functions -----*/
@@ -63,8 +68,29 @@ function playMusic(){
   bgPlayer.play();
 }
 
+function checkMenu(name){
+  if (name === 'start'){
+    console.log('adkjlfajklsdfjjjj')
+    $('section#main').css('display', 'block')
+    $('section#menu').css('display', 'none')
+  }
+  else if (name === 'opt'){
+    $('section#menu').css('display', 'none')
+    $('section#optMenu').css('display', 'block')
+  }
+  else if (name === 'inst'){
+    $('section#menu').css('display', 'none')
+    $('section#instMenu').css('display', 'block')
+  }
+  else if (name === 'back'){
+    $('section#optMenu').css('display', 'none')
+    $('section#instMenu').css('display', 'none')
+    $('section#menu').css('display', 'block')
+  }
+}
+
 function init(){
-  slots = [6,6,6]
+  slots = [5,5,5]
   money = 50;
   bet = 0;
   render();
@@ -77,39 +103,32 @@ function render(){
     child = $slot.children();
     switch(slot){
       case 1:
-        // $slot.css('background-color', 'red');
         child.attr("src", symbols[0].img)
         child.attr("width", 250)
         child.attr("height", 280)
-        // $(`td.s${idx+1}`).html("<img src='http://downloadclipart.org/do-upload/clipart/2016-06/Cute_cherries_clip_art.png' alt='Whoops' height='280' width='250'>")
-        
         break;
       case 2: 
-        // $slot.css('background-color', 'orange');
         child.attr("src", symbols[1].img)
         child.attr("width", 250)
         child.attr("height", 280)
         break;
       case 3: 
-        // $slot.css('background-color', 'yellow');
         child.attr("src", symbols[2].img)
         child.attr("width", 250)
         child.attr("height", 280)
         break;
       case 4: 
-        // $slot.css('background-color', 'green');
         child.attr("src", symbols[3].img)
         child.attr("width", 250)
         child.attr("height", 280)
         break;
       case 5: 
-        // $slot.css('background-color', 'gold');
         child.attr("src", symbols[4].img)
         child.attr("width", 250)
         child.attr("height", 280)
       case 6:
         $(`td.s${idx+1}`).css('background-color', 'white');
-        $(`td.s${idx+1}`).html("<img src='http://clipart-library.com/img/688217.png' alt='Whoops' height='325' width='325'>")
+        $(`td.s${idx+1}`).html("<img src='https://i.imgur.com/1I9zh7g.png' alt='Whoops' height='250' width='280'>")
         break;
 
       default:
@@ -129,11 +148,6 @@ function render(){
   }
 
 
-}
-
-function menuCheck(){
-  $('main').css('display', 'block')
-  $('section#menu').css('display', 'none')
 }
 
 function randSlots(idx){
@@ -190,8 +204,8 @@ function spinSlots(){
       clearInterval(second);
       playSound('switch');
       setTimeout(function(){
-        clearInterval(third);
         animating = false;
+        clearInterval(third);
         cheat();
         playSound('switch');
         checkWin();

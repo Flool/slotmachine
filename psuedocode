@@ -32,18 +32,16 @@ On money = 0:
 
 
 icebox:
-  animations for slots, handle, betting
   music
-  flashing lights
-  betting different amounts
-  player names
-  high scores
-  options
-  reset button
-  9 slots instead of 3
 
-
-    
-
-
+  animate:
+    animations for slots, handle, betting
+    flashing lights
+      
+  main menu:
+    fancy start screen
+    reset button
+    options
+    high scores
+    player names
 

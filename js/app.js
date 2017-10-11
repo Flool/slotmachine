@@ -1,7 +1,6 @@
 $(function(){
 /*----- constants -----*/
 var slots = ['1', '2', '3'];
-var multi;
 var symbols = [
   {color: 'red', img: 'http://downloadclipart.org/do-upload/clipart/2016-06/Cute_cherries_clip_art.png' },
   {color: 'orange', img: 'http://downloadclipart.org/do-upload/clipart/2016-06/Orange_clipart_png.png' },
@@ -13,6 +12,7 @@ var sounds = {
   coin: "sounds/coinslot.wav",
   win: "sounds/win.mp3",
   spinning: 'sounds/',
+  switch: "sounds/switch.mp3"
   // quack: 'sounds/quack.mp3'
 }
 
@@ -21,8 +21,11 @@ var sounds = {
 
 /*----- app's state (variables) -----*/
 
-var money
-var bet
+var money;
+var manu;
+var bet;
+var multi;
+var animating;
 var player = new Audio();
 var bgPlayer = new Audio();
 //bet amount
@@ -30,13 +33,16 @@ var bgPlayer = new Audio();
 
 /*----- cached element references -----*/
 
+
+
 //slots 1-3
 //button/handle
 
 /*----- event listeners -----*/
 
 $('div#handle').on('click', spinSlots);
-$('div#coinSlot').on('click', insertCoin)
+$('div#coinSlot').on('click', insertCoin);
+$('button#start').on('click', menuCheck);
 //betting 
 
 /*----- functions -----*/
@@ -44,14 +50,25 @@ $('div#coinSlot').on('click', insertCoin)
 //init(), render(), spinSlot(), checkWin(), bet()
 function playSound(name){
   player.src = sounds[name]
+  if (name === 'win'){player.volume = 0.4;}
+  if (name === 'quack'){player.volume = 0.5;}
+  if (name === 'coin'){player.volume = 0.7;}
+
   player.play();
+}
+
+function playMusic(){
+  bgPlayer.src = 'sounds/bgmusic.mp3';
+  bgPlayer.volume = 0.3;
+  bgPlayer.play();
 }
 
 function init(){
   slots = [6,6,6]
-  money = 25;
+  money = 50;
   bet = 0;
   render();
+  playMusic();
 }
 
 function render(){
@@ -114,6 +131,11 @@ function render(){
 
 }
 
+function menuCheck(){
+  $('main').css('display', 'block')
+  $('section#menu').css('display', 'none')
+}
+
 function randSlots(idx){
   var num
   
@@ -146,6 +168,8 @@ function flashColor(color){
 }
 
 function spinSlots(){
+  if (animating) return;
+  animating = true;
   if (bet > 0){
     multi = bet;
     bet = 0;
@@ -160,15 +184,16 @@ function spinSlots(){
     }, 50)
 
   setTimeout(function(){ 
-    // playSound('quack');
+    playSound('switch');
     clearInterval(first);
     setTimeout(function(){
       clearInterval(second);
-      // playSound('quack');
+      playSound('switch');
       setTimeout(function(){
         clearInterval(third);
+        animating = false;
         cheat();
-        // playSound('quack');
+        playSound('switch');
         checkWin();
       }, 1500)
     }, 1500)
@@ -179,7 +204,7 @@ function spinSlots(){
 
 function checkWin(){
   if((slots[0] === slots[1]) && (slots[1] === slots[2])){
-    playSound('win')
+    playSound('win');
     flashColor(symbols[slots[0]-1].color);
     var amount = Math.floor((multi * 1.2) * 5 * slots[0]);
     multi = 1;
@@ -207,6 +232,7 @@ function cheat(){
 
 
 function insertCoin(){
+  if (animating) return;
   if (money > 0){
   money -= 1;
   bet += 1;

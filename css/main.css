@@ -14,7 +14,8 @@ p{
 }
 
 body{
-  background-color: #FFCC00;
+  /* background-image: url('https://goo.gl/6BsEuB'); */
+  background-color: #D5A300;
 }
 
 tr{
@@ -42,3 +43,18 @@ h1{
 }
 
 
+main{
+  display: none;
+}
+
+.menuB{
+  background-color: #e7e7e7;
+  margin: 20px;
+  height: 45px;
+
+}
+
+#btns{
+  display: flex;
+  justify-content: center;
+}

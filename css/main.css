@@ -15,7 +15,7 @@ p{
 
 body{
   /* background-image: url('https://goo.gl/6BsEuB'); */
-  background-color: #D5A300;
+  background-color: goldenrod;
 }
 
 tr{
@@ -57,7 +57,32 @@ h1{
   justify-content: center;
 }
 
-#optMenu, #instMenu, #main{
+#instructions{
+  align-self: flex-end;
+}
+
+#instMenu, #main{
   display: none;
 }
 
+h2{
+  display: flex;
+  justify-content: center;
+  text-decoration: underline;
+}
+
+#para{
+  padding: 0 150px;
+  text-align: center;
+}
+
+#icons{
+  display: flex;
+  justify-content: space-between
+}
+
+.back{
+  display: block;
+  margin: 0 auto;
+  background-color: #e7e7e7;
+}

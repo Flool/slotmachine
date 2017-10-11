@@ -2,11 +2,11 @@ $(function(){
 /*----- constants -----*/
 var slots = ['1', '2', '3'];
 var symbols = [
-  {color: 'lightred', img: 'http://downloadclipart.org/do-upload/clipart/2016-06/Cute_cherries_clip_art.png' },
+  {color: 'OrangeRed', img: 'http://downloadclipart.org/do-upload/clipart/2016-06/Cute_cherries_clip_art.png' },
   {color: 'orange', img: 'http://downloadclipart.org/do-upload/clipart/2016-06/Orange_clipart_png.png' },
   {color: 'yellow', img: 'https://tr1.cbsistatic.com/hub/i/2015/05/07/a6b60bbe-f4ae-11e4-940f-14feb5cc3d2a/lemon09062012.png' },
+  {color: 'lightblue', img: 'https://i.imgur.com/1I9zh7g.png' }, 
   {color: 'red', img: 'http://clipart-library.com/img/688217.png' },
-  {color: 'blue', img: 'https://i.imgur.com/1I9zh7g.png' }
 ]
 var sounds = {
   coin: "sounds/coinslot.wav",
@@ -43,9 +43,8 @@ var bgPlayer = new Audio();
 $('div#handle').on('click', spinSlots);
 $('div#coinSlot').on('click', insertCoin);
 $('#start').on('click', function() {checkMenu('start')});
-$('button#instructions').on('click', function() {checkMenu('inst')});
-$('button#options').on('click', function() {checkMenu('opt')});
-$('button.back').on('click', function() {checkMenu('back')});
+$('#instructions').on('click', function() {checkMenu('inst')});
+$('.back').on('click', function() {checkMenu('back')});
 
 
 //betting 
@@ -70,20 +69,14 @@ function playMusic(){
 
 function checkMenu(name){
   if (name === 'start'){
-    console.log('adkjlfajklsdfjjjj')
     $('section#main').css('display', 'block')
     $('section#menu').css('display', 'none')
-  }
-  else if (name === 'opt'){
-    $('section#menu').css('display', 'none')
-    $('section#optMenu').css('display', 'block')
   }
   else if (name === 'inst'){
     $('section#menu').css('display', 'none')
     $('section#instMenu').css('display', 'block')
   }
   else if (name === 'back'){
-    $('section#optMenu').css('display', 'none')
     $('section#instMenu').css('display', 'none')
     $('section#menu').css('display', 'block')
   }
@@ -101,6 +94,7 @@ function render(){
   slots.forEach(function(slot,idx){
     $slot = $(`td.s${idx+1}`)
     child = $slot.children();
+    $(`td.s${idx+1}`).css('background-color', 'white');
     switch(slot){
       case 1:
         child.attr("src", symbols[0].img)
@@ -119,16 +113,15 @@ function render(){
         break;
       case 4: 
         child.attr("src", symbols[3].img)
-        child.attr("width", 250)
+        child.attr("width", 300)
         child.attr("height", 280)
         break;
       case 5: 
         child.attr("src", symbols[4].img)
-        child.attr("width", 250)
+        child.attr("width", 300)
         child.attr("height", 280)
-      case 6:
-        $(`td.s${idx+1}`).css('background-color', 'white');
-        $(`td.s${idx+1}`).html("<img src='https://i.imgur.com/1I9zh7g.png' alt='Whoops' height='250' width='280'>")
+      case 6:       
+        $(`td.s${idx+1}`).html("<img src='http://clipart-library.com/img/688217.png' alt='Whoops' height='270' width='280'>")
         break;
 
       default:
@@ -180,6 +173,8 @@ function flashColor(color){
     clearInterval(interval)
   }, 3000)
 }
+
+
 
 function spinSlots(){
   if (animating) return;
@@ -246,13 +241,12 @@ function cheat(){
 
 
 function insertCoin(){
-  if (animating) return;
   if (money > 0){
   money -= 1;
   bet += 1;
   render();
   }
-
+  if (animating) return;
   playSound('coin')
 }
 

@@ -1,6 +1,7 @@
 $(function(){
 /*----- constants -----*/
 var slots = ['1', '2', '3'];
+var multi;
 var symbols = [
   {color: 'red', img: 'http://downloadclipart.org/do-upload/clipart/2016-06/Cute_cherries_clip_art.png' },
   {color: 'orange', img: 'http://downloadclipart.org/do-upload/clipart/2016-06/Orange_clipart_png.png' },
@@ -12,7 +13,7 @@ var sounds = {
   coin: "sounds/coinslot.wav",
   win: "sounds/win.mp3",
   spinning: 'sounds/',
-  quack: 'sounds/quack.mp3'
+  // quack: 'sounds/quack.mp3'
 }
 
 
@@ -103,7 +104,7 @@ function render(){
     // $(`td.${idx+1}`).text(slot);
   })
   $('p.cash').html(`Current Cash: <strong>$${money}</strong>`)
-  $('p.betM').html(`Credit: <strong>$${bet}</strong>`)
+  $('p.betM').html(`Bet: <strong>$${bet}</strong>`)
 
 
   if(money === 0 && bet === 0){
@@ -146,7 +147,8 @@ function flashColor(color){
 
 function spinSlots(){
   if (bet > 0){
-    bet -= 1;
+    multi = bet;
+    bet = 0;
     var first = setInterval(function(){
       randSlots(0);
     }, 50)
@@ -158,15 +160,15 @@ function spinSlots(){
     }, 50)
 
   setTimeout(function(){ 
-    playSound('quack');
+    // playSound('quack');
     clearInterval(first);
     setTimeout(function(){
       clearInterval(second);
-      playSound('quack');
+      // playSound('quack');
       setTimeout(function(){
         clearInterval(third);
         cheat();
-        playSound('quack');
+        // playSound('quack');
         checkWin();
       }, 1500)
     }, 1500)
@@ -179,16 +181,18 @@ function checkWin(){
   if((slots[0] === slots[1]) && (slots[1] === slots[2])){
     playSound('win')
     flashColor(symbols[slots[0]-1].color);
-    var amount = 15*slots[0];
+    var amount = Math.floor((multi * 1.2) * 5 * slots[0]);
+    multi = 1;
+    console.log(amount);
     var time = setInterval(function(){
-      money += parseInt((amount/12));
-      console.log(parseInt(amount/12))
+      money += Math.floor((amount/6));
+      console.log(Math.floor(amount/6))
       render();
-    }, 250)
+    }, 500)
     
     setTimeout(function(){
       clearTimeout(time)
-    }, 4000)
+    }, 3000)
   }
 }
 

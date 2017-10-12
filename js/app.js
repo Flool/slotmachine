@@ -40,11 +40,12 @@ var bgPlayer = new Audio();
 
 /*----- event listeners -----*/
 
-$('div#handle').on('click', spinSlots);
-$('div#coinSlot').on('click', insertCoin);
+$('#handle').on('click', spinSlots);
+$('#coinSlot').on('click', insertCoin);
 $('#start').on('click', function() {checkMenu('start')});
 $('#instructions').on('click', function() {checkMenu('inst')});
 $('.back').on('click', function() {checkMenu('back')});
+$('.back2').on('click', function() {checkMenu('back')});
 
 
 //betting 
@@ -62,9 +63,9 @@ function playSound(name){
 }
 
 function playMusic(){
-  bgPlayer.src = 'sounds/bgmusic.mp3';
-  bgPlayer.volume = 0.3;
-  bgPlayer.play();
+  // bgPlayer.src = 'sounds/bgmusic.mp3';
+  // bgPlayer.volume = 0.3;
+  // bgPlayer.play();
 }
 
 function checkMenu(name){
@@ -78,6 +79,7 @@ function checkMenu(name){
   }
   else if (name === 'back'){
     $('section#instMenu').css('display', 'none')
+    $('section#main').css('display', 'none')
     $('section#menu').css('display', 'block')
   }
 }
@@ -92,24 +94,24 @@ function init(){
 
 function render(){
   slots.forEach(function(slot,idx){
-    $slot = $(`td.s${idx+1}`)
+    $slot = $(`div.s${idx+1}`)
     child = $slot.children();
-    $(`td.s${idx+1}`).css('background-color', 'white');
+    $(`div.s${idx+1}`).css('background-color', 'white');
     switch(slot){
       case 1:
         child.attr("src", symbols[0].img)
-        child.attr("width", 250)
-        child.attr("height", 280)
+        child.attr("width", 145)
+        child.attr("height", 160)
         break;
       case 2: 
         child.attr("src", symbols[1].img)
-        child.attr("width", 250)
-        child.attr("height", 280)
+        child.attr("width", 145)
+        child.attr("height", 160)
         break;
       case 3: 
         child.attr("src", symbols[2].img)
-        child.attr("width", 250)
-        child.attr("height", 280)
+        child.attr("width", 145)
+        child.attr("height", 160)
         break;
       case 4: 
         child.attr("src", symbols[3].img)
@@ -121,12 +123,12 @@ function render(){
         child.attr("width", 300)
         child.attr("height", 280)
       case 6:       
-        $(`td.s${idx+1}`).html("<img src='http://clipart-library.com/img/688217.png' alt='Whoops' height='270' width='280'>")
+        $(`div.s${idx+1}`).html("<img src='http://clipart-library.com/img/688217.png' alt='Whoops' height='270' width='280'>")
         break;
 
       default:
-        $(`td.s${idx+1}`).css('background-color', 'Pink');
-        $(`td.s${idx+1}`).text('Uh-Oh');
+        $(`div.s${idx+1}`).css('background-color', 'Pink');
+        $(`div.s${idx+1}`).text('Uh-Oh');
         break;
 
     }
@@ -164,7 +166,7 @@ function randSlots(idx){
 }
 
 function flashColor(color){
-  $slots = $('td');
+  $slots = $('div.background div');
   var interval = setInterval(function(){
     $slots.css('background-color') === 'rgb(255, 255, 255)' ? $slots.css('background-color', color) : $slots.css('background-color', 'white');
   }, 250)

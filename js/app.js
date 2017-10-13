@@ -107,7 +107,6 @@ function render(){
         break;
     }
   })
-  $('p.cash').html(`Winnings: `);
   $('p.winnings').html(`$${money}`);
   $('p.betM').html(`Bet: `);
   $('p.betC').html(`$${bet}`);
@@ -190,10 +189,12 @@ function checkWin(){
     }, 3000);
   }
   if(money === 0 && bet === 0){
-    alert('You lose')
+    if (!animating){
+      $('p.winnings').html('Bankrupt!')
+      $('p.winnings').css('margin-left', '365px')
+    }
   }
 }
-
 function cheat(){
   if (slots[0] === slots[1]){
       if(Math.random() > .50){

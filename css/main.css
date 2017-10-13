@@ -1,197 +1,169 @@
-#instMenu, #main{
-  display: none;
+#instMenu, #main {
+	display: none;
 }
-#coinSlot, #handle{
-  cursor: pointer;
+body {
+	background-image: url("https://i.imgur.com/TaFs95Y.jpg");
+	background-size: cover;
 }
-
-body{
-  background-image: url("https://i.imgur.com/TaFs95Y.jpg");
-  background-size: cover;
+h1 {
+	font-family: 'Monoton', cursive;
+	color: gold;
+	text-shadow: 2px 2px #000000;
 }
-
-h1{
-  font-family: 'Monoton', cursive;
-  color: gold;
-  text-shadow: 2px 2px #000000; 
+button {
+	background-color: white;
 }
-
-button{
-  background-color: white;  
+.back {
+	margin-top: 10px;
 }
-
-.back{
-  margin-top: 10px;
+#instMenu {
+	color: white;
+	padding-top: 80px;
 }
-
-#instMenu{
-  color: white;
-  padding-top: 80px;
+p {
+	font-size: 25px;
 }
-
-p{
-  font-size: 25px;
+#para {
+	font-size: 30px;
 }
-
-#para{
-  font-size: 30px;
+.box {
+	background-color: rgba(138, 167, 174, 0.5);
+	padding: 15px;
+	border-radius: 10px;
+	text-shadow: 3px 3px black;
+	outline: solid 3px black;
+	text-align: center;
+	max-width: 900px;
 }
-
-.box{
-  background-color: rgba(138, 167, 174, 0.5);
-  padding: 15px;
-  border-radius: 10px;
-  text-shadow: 3px 3px black;
-  outline: solid 3px black;
-  text-align: center;
-  max-width: 900px;
+.background {
+	background-image: url("https://i.imgur.com/qMqbiSF.png");
+	background-size: cover;
+	height: 670px;
+	width: 1450px;
+	position: relative;
+	top: -35px;
+	left: -30px;
 }
-
-.background{
-  background-image: url("https://i.imgur.com/qMqbiSF.png");
-  background-size: cover;
-  height: 670px;
-  width: 1450px;
-  position: relative; 
-  top: -35px;
-  left: -30px;
+.s1, .s2, .s3 {
+	width: 310px;
+	height: 310px;
+	max-width: 310px;
+	max-height: 310px;
+	border: 1.5px solid black;
+	text-align: center;
+	font-size: 30px;
+	border-radius: 30px;
+	margin: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-
-.s1, .s2, .s3{
-  width: 310px;
-  height: 310px;
-  max-width: 310px;
-  max-height: 310px;
-  border: 1.5px solid black; 
-  text-align: center;
-  font-size: 30px;
-  border-radius: 30px;
-  margin: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.header {
+	color: white;
+	text-shadow: 2px 2px black;
 }
-
-.header{
-  color: white;
-  text-shadow: 2px 2px black;
+.back2 {
+	padding: 0;
 }
-
-.back2{
-  padding: 0;
+.winnings {
+	color: gold;
+	font-size: 75px;
+	font-family: 'Abril Fatface', cursive;
+	margin-top: -15px;
 }
-.winnings{
-  color: gold;
-  font-size: 75px;
-  font-family: 'Abril Fatface', cursive;
-  margin-top: -15px;
+.screen {
+	background-color: rgb(72, 5, 0);
+	color: white;
+	border-radius: 5px;
+	border: solid silver 3px;
+	position: absolute;
+	width: 220px;
+	height: 70px;
+	left: 265px;
+	top: 35px;
+	font-family: 'Arvo', serif;
 }
-
-.screen{
-  background-color: rgb(72, 5, 0);
-  color: white;
-  border-radius: 5px;
-  border: solid silver 3px;
-  position: absolute;
-  width: 220px;
-  height: 70px;
-  left: 265px;
-  top: 35px;
-  font-family: 'Arvo', serif;
+.betM {
+	text-shadow: 2px 2px black;
+	display: inline;
+	padding-left: 10px;
 }
-.betM{
-  text-shadow: 2px 2px black;
-  display: inline;
-  padding-left: 10px;
+.betC {
+	text-shadow: 2px 2px black;
+	display: inline;
+	font-size: 35px;
 }
-
-.betC{
-  
-  text-shadow: 2px 2px black;
-  display: inline;
-  font-size: 35px;
+.cash, .betM {
+	font-size: 40px;
 }
-
-.cash, .betM{
-  font-size: 40px;
+#coinSlot, #handle {
+	position: absolute;
 }
-
-#coinSlot, #handle{
-  position: absolute;
+#coinSlot {
+	top: 16px;
+	right: 320px;
+	max-height: 10px;
 }
-
-#coinSlot{
-  top: 16px;
-  right: 320px;
-  max-height: 10px;
+#handle {
+	top: 10px;
+	right: 620px;
+	cursor: pointer;
 }
-
-#handle{
-  top: 10px;
-  right: 620px;
+.s1 {
+	position: absolute;
+	left: 230px;
+	top: 170px;
 }
-
-.s1{
-  position: absolute;
-  left: 230px;
-  top: 170px;
+.s2 {
+	position: absolute;
+	left: 555px;
+	top: 170px;
 }
-.s2{
-  position: absolute;
-  left: 555px;
-  top: 170px;
+.s3 {
+	position: absolute;
+	left: 880px;
+	top: 170px;
 }
-.s3{
-  position: absolute;
-  left: 880px;
-  top: 170px;
+.bet1 {
+	background-color: white;
+	position: absolute;
+	top: 540px;
+	left: 350px;
 }
-
-.bet1{
-  background-color: white;
-  position: absolute;
-  top: 540px;
-  left: 350px;
+.bet25 {
+	background-color: red;
+	position: absolute;
+	top: 540px;
+	left: 550px;
 }
-
-.bet25{
-  background-color: red;
-  position: absolute;
-  top: 540px;
-  left: 550px;
+.bet100 {
+	background-color: blue;
+	position: absolute;
+	top: 540px;
+	left: 750px;
 }
-
-.bet100{
-  background-color: blue;
-  position: absolute;
-  top: 540px;
-  left: 750px;
+.bet1000 {
+	background-color: green;
+	position: absolute;
+	top: 540px;
+	left: 950px;
+	padding-right: 50px;
 }
-
-.bet1000{
-  background-color: green;
-  position: absolute;
-  top: 540px;
-  left: 950px;
-  padding-right: 50px;
+.bet1, .bet25, .bet100, .bet1000 {
+	color: black;
+	border-radius: 5px;
+	border: solid black 2px;
+	height: 120px;
+	width: 150px;
+	font-family: 'Arvo', serif;
+	font-size: 17px;
+	text-align: center;
+	box-shadow: 3px 3px black;
 }
-
-.bet1, .bet25, .bet100, .bet1000{
-  color:black;
-  border-radius: 5px;
-  border: solid black 2px;
-  height: 120px;
-  width: 150px;
-  font-family: 'Arvo', serif;
-  font-size: 17px;
-  text-align: center;
-  box-shadow: 3px 3px black;
-}
-
-.title{
-  font-size: 130px;
-  text-align: center;
-  padding-top: 90px;
-  text-shadow: 6px 6px black;
-  font: outline;
+.title {
+	font-size: 130px;
+	text-align: center;
+	padding-top: 90px;
+	text-shadow: 6px 6px black;
+	font: outline;
 }

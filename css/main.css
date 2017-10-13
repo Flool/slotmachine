@@ -93,22 +93,28 @@ p{
 }
 
 .screen{
-  background-color: rgba(0, 72, 0);
+  background-color: rgb(72, 5, 0);
+  color: white;
+  border-radius: 5px;
+  border: solid silver 3px;
   position: absolute;
-  outline: solid black 1px;
-  width: 200px;
-  height: 100px;
+  width: 220px;
+  height: 70px;
   left: 265px;
-  top: 30px;
+  top: 35px;
+  font-family: 'Arvo', serif;
 }
 .betM{
-  color: white;
   text-shadow: 2px 2px black;
+  display: inline;
+  padding-left: 10px;
 }
 
 .betC{
-  color: white;
+  
   text-shadow: 2px 2px black;
+  display: inline;
+  font-size: 35px;
 }
 
 .cash, .betM{
@@ -145,10 +151,7 @@ p{
   left: 880px;
   top: 170px;
 }
-/* #main{
-  width: 80%;
-  margin: auto auto;
-} */
+
 .bet1{
   background-color: white;
   position: absolute;
@@ -184,8 +187,8 @@ p{
   border: solid black 2px;
   height: 120px;
   width: 150px;
-  font-family: 'PT Sans Narrow', sans-serif;
-  font-size: 23px;
+  font-family: 'Arvo', serif;
+  font-size: 17px;
   text-align: center;
   box-shadow: 3px 3px black;
 }

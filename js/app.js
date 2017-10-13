@@ -107,28 +107,28 @@ function render(){
     switch(slot){
       case 1:
         child.attr("src", symbols[0].img);
-        child.attr("width", 270);
-        child.attr("height", 255);
+        child.attr("width", 220);
+        child.attr("height", 230);
         break;
       case 2: 
         child.attr("src", symbols[1].img);
-        child.attr("width", 270);
-        child.attr("height", 255);
+        child.attr("width", 225);
+        child.attr("height", 235);
         break;
       case 3: 
         child.attr("src", symbols[2].img);
-        child.attr("width", 280);
-        child.attr("height", 260);
+        child.attr("width", 220);
+        child.attr("height", 200);
         break;
       case 4: 
         child.attr("src", symbols[3].img);
-        child.attr("width", 280);
-        child.attr("height", 260);
+        child.attr("width", 240);
+        child.attr("height", 230);
         break;
       case 5: 
         child.attr("src", symbols[4].img);
-        child.attr("width", 280);
-        child.attr("height", 260);
+        child.attr("width", 260);
+        child.attr("height", 240);
         break;
       // case 6:       
       //   $(`div.s${idx+1}`).html("<img src='http://clipart-library.com/img/688217.png' alt='Whoops' height='270' width='280'>")
@@ -171,7 +171,7 @@ function randSlots(idx){
 }
 
 function flashColor(color){
-  $slots = $('div.background div');
+  $slots = $('div.squares div');
   var interval = setInterval(function(){
     $slots.css('background-color') === 'rgb(255, 255, 255)' ? $slots.css('background-color', color) : $slots.css('background-color', 'white');
   }, 250)

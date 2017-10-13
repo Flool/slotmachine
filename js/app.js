@@ -7,14 +7,13 @@ var symbols = [
   {color: 'yellow', img: 'https://tr1.cbsistatic.com/hub/i/2015/05/07/a6b60bbe-f4ae-11e4-940f-14feb5cc3d2a/lemon09062012.png' },
   {color: 'lightblue', img: 'https://i.imgur.com/1I9zh7g.png' }, 
   {color: 'red', img: 'http://clipart-library.com/img/688217.png' },
-]
+];
 var sounds = {
   coin: "sounds/coinslot.wav",
   win: "sounds/win.mp3",
   spinning: 'sounds/',
   switch: "sounds/switch.mp3"
-  // quack: 'sounds/quack.mp3'
-}
+};
 
 
 
@@ -22,16 +21,13 @@ var sounds = {
 /*----- app's state (variables) -----*/
 
 var money;
-var manu;
+var menu;
 var bet;
 var multi;
 var betAm;
 var animating;
 var player = new Audio();
 var bgPlayer = new Audio();
-//bet amount
-
-
 /*----- cached element references -----*/
 
 
@@ -64,7 +60,7 @@ function playSound(name){
   if (name === 'coin'){player.volume = 0.7;}
 
   player.play();
-}
+};
 
 function playMusic(){
   // bgPlayer.src = 'sounds/bgmusic.mp3';
@@ -77,22 +73,21 @@ function checkMenu(name){
     $('section#main').css('display', 'block');
     $('.container').css('margin', '0');
     $('section#menu').css('display', 'none');
-    $('body').css('background-image', "url('https://i.imgur.com/TaFs95Y.jpg')");
     $('body').css('background-repeat', "no-repeat");
-
+    menu = 0;
   }
   else if (name === 'inst'){
     $('section#menu').css('display', 'none');
     $('section#instMenu').css('display', 'block');
     $('.container').css('margin', '0 auto');
-    $('body').css('background-image', "url('https://i.imgur.com/TaFs95Y.jpg')");
+    menu = 0;
   }
   else if (name === 'back'){
     $('section#instMenu').css('display', 'none');
     $('section#main').css('display', 'none');
     $('section#menu').css('display', 'block');
     $('.container').css('margin', '0 auto');
-    $('body').css('background-image', "url('https://i.imgur.com/TaFs95Y.jpg')");
+    menu = 1;
   }
 }
 
@@ -111,29 +106,29 @@ function render(){
     $(`div.s${idx+1}`).css('background-color', 'white');
     switch(slot){
       case 1:
-        child.attr("src", symbols[0].img)
-        child.attr("width", 270)
-        child.attr("height", 255)
+        child.attr("src", symbols[0].img);
+        child.attr("width", 270);
+        child.attr("height", 255);
         break;
       case 2: 
-        child.attr("src", symbols[1].img)
-        child.attr("width", 270)
-        child.attr("height", 255)
+        child.attr("src", symbols[1].img);
+        child.attr("width", 270);
+        child.attr("height", 255);
         break;
       case 3: 
-        child.attr("src", symbols[2].img)
-        child.attr("width", 280)
-        child.attr("height", 260)
+        child.attr("src", symbols[2].img);
+        child.attr("width", 280);
+        child.attr("height", 260);
         break;
       case 4: 
-        child.attr("src", symbols[3].img)
-        child.attr("width", 280)
-        child.attr("height", 260)
+        child.attr("src", symbols[3].img);
+        child.attr("width", 280);
+        child.attr("height", 260);
         break;
       case 5: 
-        child.attr("src", symbols[4].img)
-        child.attr("width", 280)
-        child.attr("height", 260)
+        child.attr("src", symbols[4].img);
+        child.attr("width", 280);
+        child.attr("height", 260);
         break;
       // case 6:       
       //   $(`div.s${idx+1}`).html("<img src='http://clipart-library.com/img/688217.png' alt='Whoops' height='270' width='280'>")
@@ -269,8 +264,17 @@ function insertCoin(num){
 
 
 
+// function titleAnim(){
+//   $title = $('h1.title');
+//   var interval = setInterval(function(){
+//     $title.css('color') === 'rgb(255, 215, 0)' ? setTimeout(function(){
+//       $title.css('color', 'gray')}, 500) : $title.css('color', 'gold');
+//     console.log('1234')
+//   }, 1000)
+// }
 
 init();
+// titleAnim();
 
 
 

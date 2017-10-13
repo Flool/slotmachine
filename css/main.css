@@ -51,20 +51,21 @@ p{
   background-image: url("https://i.imgur.com/wd6UCge.png");
   background-size: cover;
   height: 670px;
-  width: 1300px;
-  display: flex;
-  flex-wrap: nowrap;
-  position: relative;
-  top: 15px;
+  width: 1450px;
+  /* display: flex; */
+  /* flex-wrap: nowrap; */
+  position: relative; 
+  top: -35px;
+  left: -30px;
 }
 
 
 
 .s1, .s2, .s3{
-  width: 300px;
-  height: 300px;
-  max-width: 300px;
-  max-height: 300px;
+  width: 310px;
+  height: 310px;
+  max-width: 310px;
+  max-height: 310px;
   border: 1.5px solid black; 
   text-align: center;
   font-size: 30px;
@@ -109,12 +110,56 @@ p{
   position: absolute;
 }
 
-s1{
+#coinSlot{
+  top: -15px;
+}
 
+#handle{
+  top: -15px;
+  left: 50px;
 }
-s2{
 
+.s1{
+  position: absolute;
+  left: 230px;
+  top: 185px;
 }
-s3{
-  
+.s2{
+  position: absolute;
+  left: 555px;
+  top: 185px;
 }
+.s3{
+  position: absolute;
+  left: 880px;
+  top: 185px;
+}
+/* #main{
+  width: 80%;
+  margin: auto auto;
+} */
+
+.bet25{
+  background-color: red;
+}
+
+.bet100{
+  background-color: blue;
+}
+
+.bet1000{
+  background-color: green;
+  text-align: left;
+}
+
+.bet1, .bet25, .bet100, .bet1000{
+  color:black;
+  border-radius: 100%;
+  border: solid black 2px;
+  height: 120px;
+  width: 120px;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 20px;
+  text-align: center;
+}
+

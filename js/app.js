@@ -25,6 +25,7 @@ var money;
 var manu;
 var bet;
 var multi;
+var betAm;
 var animating;
 var player = new Audio();
 var bgPlayer = new Audio();
@@ -41,7 +42,10 @@ var bgPlayer = new Audio();
 /*----- event listeners -----*/
 
 $('#handle').on('click', spinSlots);
-$('#coinSlot').on('click', insertCoin);
+$('.bet1').on('click', function(){insertCoin(1)});
+$('.bet25').on('click', function(){insertCoin(25)});
+$('.bet100').on('click', function(){insertCoin(100)});
+$('.bet1000').on('click', function(){insertCoin(1000)});
 $('#start').on('click', function() {checkMenu('start')});
 $('#instructions').on('click', function() {checkMenu('inst')});
 $('.back').on('click', function() {checkMenu('back')});
@@ -70,20 +74,25 @@ function playMusic(){
 
 function checkMenu(name){
   if (name === 'start'){
-    $('section#main').css('display', 'block')
-    $('.container').css('margin', '0')
-    $('section#menu').css('display', 'none')
+    $('section#main').css('display', 'block');
+    $('.container').css('margin', '0');
+    $('section#menu').css('display', 'none');
+    $('body').css('background-image', "url('https://i.imgur.com/TaFs95Y.jpg')");
+    $('body').css('background-repeat', "no-repeat");
+
   }
   else if (name === 'inst'){
-    $('section#menu').css('display', 'none')
-    $('section#instMenu').css('display', 'block')
-    $('.container').css('margin', '0 auto')
+    $('section#menu').css('display', 'none');
+    $('section#instMenu').css('display', 'block');
+    $('.container').css('margin', '0 auto');
+    $('body').css('background-image', "url('https://i.imgur.com/TaFs95Y.jpg')");
   }
   else if (name === 'back'){
-    $('section#instMenu').css('display', 'none')
-    $('section#main').css('display', 'none')
-    $('section#menu').css('display', 'block')
-    $('.container').css('margin', '0 auto')
+    $('section#instMenu').css('display', 'none');
+    $('section#main').css('display', 'none');
+    $('section#menu').css('display', 'block');
+    $('.container').css('margin', '0 auto');
+    $('body').css('background-image', "url('https://i.imgur.com/TaFs95Y.jpg')");
   }
 }
 
@@ -103,28 +112,28 @@ function render(){
     switch(slot){
       case 1:
         child.attr("src", symbols[0].img)
-        child.attr("width", 145)
-        child.attr("height", 160)
+        child.attr("width", 270)
+        child.attr("height", 255)
         break;
       case 2: 
         child.attr("src", symbols[1].img)
-        child.attr("width", 145)
-        child.attr("height", 160)
+        child.attr("width", 270)
+        child.attr("height", 255)
         break;
       case 3: 
         child.attr("src", symbols[2].img)
-        child.attr("width", 145)
-        child.attr("height", 160)
+        child.attr("width", 280)
+        child.attr("height", 260)
         break;
       case 4: 
         child.attr("src", symbols[3].img)
-        child.attr("width", 300)
-        child.attr("height", 280)
+        child.attr("width", 280)
+        child.attr("height", 260)
         break;
       case 5: 
         child.attr("src", symbols[4].img)
-        child.attr("width", 300)
-        child.attr("height", 280)
+        child.attr("width", 280)
+        child.attr("height", 260)
         break;
       // case 6:       
       //   $(`div.s${idx+1}`).html("<img src='http://clipart-library.com/img/688217.png' alt='Whoops' height='270' width='280'>")
@@ -144,12 +153,6 @@ function render(){
   $('p.betC').html(`$${bet}`)
   
 
-
-  if(money === 0 && bet === 0){
-    alert('You lose')
-  }
-
-
 }
 
 function randSlots(idx){
@@ -158,13 +161,13 @@ function randSlots(idx){
     num = Math.floor((Math.random()*12) + 1);
 
     if (num < 5) {
-      slots[idx] = 5;
+      slots[idx] = 1;
     } else if (num >= 5 && num < 8) {
-      slots[idx] = 5;
+      slots[idx] = 2;
     } else if (num >= 8 && num < 10){
-      slots[idx] = 5;
+      slots[idx] = 3;
     } else if (num >= 10 && num < 12){
-      slots[idx] = 5;
+      slots[idx] = 4;
     } else if (num === 12){
       slots[idx] = 5;
     }
@@ -186,7 +189,8 @@ function flashColor(color){
 
 
 function spinSlots(){
-  if (animating) return;
+  if(animating) return;
+  if(bet===0) return;
   animating = true;
   if (bet > 0){
     multi = bet;
@@ -237,6 +241,9 @@ function checkWin(){
       clearTimeout(time)
     }, 3000)
   }
+  if(money === 0 && bet === 0){
+    alert('You lose')
+  }
 }
 
 function cheat(){
@@ -249,10 +256,11 @@ function cheat(){
 }
 
 
-function insertCoin(){
-  if (money > 0){
-  money -= 1;
-  bet += 1;
+function insertCoin(num){
+  console.log(num)
+  if (money >= num){
+  money -= num;
+  bet += num;
   render();
   }
   if (animating) return;

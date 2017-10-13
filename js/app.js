@@ -71,16 +71,19 @@ function playMusic(){
 function checkMenu(name){
   if (name === 'start'){
     $('section#main').css('display', 'block')
+    $('.container').css('margin', '0')
     $('section#menu').css('display', 'none')
   }
   else if (name === 'inst'){
     $('section#menu').css('display', 'none')
     $('section#instMenu').css('display', 'block')
+    $('.container').css('margin', '0 auto')
   }
   else if (name === 'back'){
     $('section#instMenu').css('display', 'none')
     $('section#main').css('display', 'none')
     $('section#menu').css('display', 'block')
+    $('.container').css('margin', '0 auto')
   }
 }
 
@@ -122,9 +125,10 @@ function render(){
         child.attr("src", symbols[4].img)
         child.attr("width", 300)
         child.attr("height", 280)
-      case 6:       
-        $(`div.s${idx+1}`).html("<img src='http://clipart-library.com/img/688217.png' alt='Whoops' height='270' width='280'>")
         break;
+      // case 6:       
+      //   $(`div.s${idx+1}`).html("<img src='http://clipart-library.com/img/688217.png' alt='Whoops' height='270' width='280'>")
+      //   break;
 
       default:
         $(`div.s${idx+1}`).css('background-color', 'Pink');
@@ -134,8 +138,11 @@ function render(){
     }
     // $(`td.${idx+1}`).text(slot);
   })
-  $('p.cash').html(`Current Cash: <strong>$${money}</strong>`)
-  $('p.betM').html(`Bet: <strong>$${bet}</strong>`)
+  $('p.cash').html(`Winnings: `)
+  $('p.winnings').html(`$${money}`)
+  $('p.betM').html(`Bet: `)
+  $('p.betC').html(`$${bet}`)
+  
 
 
   if(money === 0 && bet === 0){
@@ -151,13 +158,13 @@ function randSlots(idx){
     num = Math.floor((Math.random()*12) + 1);
 
     if (num < 5) {
-      slots[idx] = 1;
+      slots[idx] = 5;
     } else if (num >= 5 && num < 8) {
-      slots[idx] = 2;
+      slots[idx] = 5;
     } else if (num >= 8 && num < 10){
-      slots[idx] = 3;
+      slots[idx] = 5;
     } else if (num >= 10 && num < 12){
-      slots[idx] = 4;
+      slots[idx] = 5;
     } else if (num === 12){
       slots[idx] = 5;
     }

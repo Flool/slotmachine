@@ -1,83 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
-  <link href="https://fonts.googleapis.com/css?family=Monoton|Abril+Fatface|PT+Sans+Narrow|Arvo" rel="stylesheet">
-  <link rel="stylesheet" href="css/main.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <title>Virtual Slot Machine</title>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Monoton|Abril+Fatface|PT+Sans+Narrow|Arvo" rel="stylesheet">
+	<link href="css/main.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<title>Virtual Slot Machine</title>
 </head>
 <body class="container">
-<div class = "please">
-
-
-  <section id="menu">
-      <div class="row">
-        <h1 class="title eight columns offset-by-two">Virtual $lot Machine</h1>
-      </div>
-      <section id="btns" class="row">
-        <button class="menuB four columns offset-by-two" id="instructions">Instructions</button>
-        <button class="menuB four columns" id="start">Start</button>
-      </section>
-  </section>
-
-
-
-  <section id="instMenu">
-    <div class="row">
-      <button class="back two columns">Back</button>
-      <h1 id ="instT" class="two columns offset-by-two">Instructions</h1>
-    </div>
-    
-    <div class="box">
-      <p id ="para">Click the coin slot to enter as many coins as you wish to bet, then click the spin button to spin the slots! The more you bet the more you can win! More rare icons reward more coins.<br></p>
-      <div class="icons1 row">
-        <p class="four columns"><img src="http://downloadclipart.org/do-upload/clipart/2016-06/Cute_cherries_clip_art.png" alt="zoinks" height="100" width="90"> 1x coins </p>
-        <p class="four columns"><img src="http://downloadclipart.org/do-upload/clipart/2016-06/Orange_clipart_png.png" alt="zoinks" height="100" width="90">2x coins </p>
-        <p class="four columns"><img src="https://tr1.cbsistatic.com/hub/i/2015/05/07/a6b60bbe-f4ae-11e4-940f-14feb5cc3d2a/lemon09062012.png" alt="zoinks" height="90" width="80"> 3x coins</p>
-      </div>
-      <div class="icons2 row">
-        <p class="four columns offset-by-two"><br><img src="https://i.imgur.com/1I9zh7g.png" alt="zoinks" height="90" width="80"> 4x coins </p>
-        <p class="four columns offset-by-one"><br><img src="http://clipart-library.com/img/688217.png" alt="zoinks" height="90" width="80"> 5x coins </p>
-      </div>
-    </div>  
-  </section>
-
-
-
-
-
-  <section id="main">
-    <section class="header row">
-      <button class="back2 two columns">Back To Menu</button>
-      <p class="winnings one column offset-by-six"></p>
-      
-    </section> 
-
-    
-
-    <div class="background">
-        <div id="coinSlot"><img src="https://i.imgur.com/9DYVHve.png" height="130" alt="frickin heck"></div>
-        <div id="handle"><img src="https://sentosa.travelshoppes.com/Content/images/spin-button.png" alt="frickin heck"></div>
-        <div class = "screen">
-          <p class="betM"></p>
-          <p class="betC"></p>
-        </div>
-        <button class="bet1">Bet $1</button>
-        <button class="bet25">Bet $25</button>
-        <button class="bet100">Bet $100</button>
-        <button class="bet1000">Bet $1000</button>
-        <div class = "squares">
-          <div class="s1"><img src="" alt="Whoops" height="270" width="280"></div>
-          <div class="s2"><img src="" alt="Whoops" height="270" width="280"></div>
-          <div class="s3"><img src="" alt="Whoops" height="270" width="280"></div>
-        </div>
-    </div>
-  </section>
-</div>
-  <script src="js/app.js" ></script>
+	<div class="please">
+		<section id="menu">
+			<div class="row">
+				<h1 class="title eight columns offset-by-two">Virtual $lot Machine</h1>
+			</div>
+			<section class="row" id="btns">
+				<button class="menuB four columns offset-by-two" id="instructions">Instructions</button> <button class="menuB four columns" id="start">Start</button>
+			</section>
+		</section>
+		<section id="instMenu">
+			<div class="row">
+				<button class="back two columns">Back</button>
+				<h1 class="two columns offset-by-two" id="instT">Instructions</h1>
+			</div>
+			<div class="box">
+				<p id="para">Click the coin slot to enter as many coins as you wish to bet, then click the spin button to spin the slots! The more you bet the more you can win! More rare icons reward more coins.<br></p>
+				<div class="icons1 row">
+					<p class="four columns"><img alt="zoinks" height="100" src="http://downloadclipart.org/do-upload/clipart/2016-06/Cute_cherries_clip_art.png" width="90"> 1x coins</p>
+					<p class="four columns"><img alt="zoinks" height="100" src="http://downloadclipart.org/do-upload/clipart/2016-06/Orange_clipart_png.png" width="90">2x coins</p>
+					<p class="four columns"><img alt="zoinks" height="90" src="https://tr1.cbsistatic.com/hub/i/2015/05/07/a6b60bbe-f4ae-11e4-940f-14feb5cc3d2a/lemon09062012.png" width="80"> 3x coins</p>
+				</div>
+				<div class="icons2 row">
+					<p class="four columns offset-by-two"><br>
+					<img alt="zoinks" height="90" src="https://i.imgur.com/1I9zh7g.png" width="80"> 4x coins</p>
+					<p class="four columns offset-by-one"><br>
+					<img alt="zoinks" height="90" src="http://clipart-library.com/img/688217.png" width="80"> 5x coins</p>
+				</div>
+			</div>
+		</section>
+		<section id="main">
+			<section class="header row">
+				<button class="back2 two columns">Back To Menu</button>
+				<p class="winnings one column offset-by-six"></p>
+			</section>
+			<div class="background">
+				<div id="coinSlot"><img alt="frickin heck" height="130" src="https://i.imgur.com/9DYVHve.png"></div>
+				<div id="handle"><img alt="frickin heck" src="https://sentosa.travelshoppes.com/Content/images/spin-button.png"></div>
+				<div class="screen">
+					<p class="betM"></p>
+					<p class="betC"></p>
+				</div><button class="bet1">Bet $1</button> <button class="bet25">Bet $25</button> <button class="bet100">Bet $100</button> <button class="bet1000">Bet $1000</button>
+				<div class="squares">
+					<div class="s1"><img alt="Whoops" height="270" src="" width="280"></div>
+					<div class="s2"><img alt="Whoops" height="270" src="" width="280"></div>
+					<div class="s3"><img alt="Whoops" height="270" src="" width="280"></div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<script src="js/app.js">
+	</script>
 </body>
 </html>

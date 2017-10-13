@@ -5,7 +5,6 @@
   cursor: pointer;
 }
 
-
 body{
   background-image: url("https://i.imgur.com/TaFs95Y.jpg");
   background-size: cover;
@@ -53,14 +52,10 @@ p{
   background-size: cover;
   height: 670px;
   width: 1450px;
-  /* display: flex; */
-  /* flex-wrap: nowrap; */
   position: relative; 
   top: -35px;
   left: -30px;
 }
-
-
 
 .s1, .s2, .s3{
   width: 310px;

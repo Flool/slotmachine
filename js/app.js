@@ -33,6 +33,7 @@ $('#start').on('click', function() {checkMenu('start')});
 $('#instructions').on('click', function() {checkMenu('inst')});
 $('.back').on('click', function() {checkMenu('back')});
 $('.back2').on('click', function() {checkMenu('back')});
+$('.reset').on('click', reset);
 /*----- functions -----*/
 function playSound(name){
   player.src = sounds[name]
@@ -211,6 +212,11 @@ function insertCoin(num){
   }
   if (animating) return;
   playSound('coin')
+}
+function reset(){
+  if(animating)return;
+  $('p.winnings').css('margin-left', '500px')
+  init();
 }
 init();
 })

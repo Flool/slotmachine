@@ -63,7 +63,9 @@ p {
 	text-shadow: 2px 2px black;
 }
 .back2 {
-	padding: 0;
+  padding: 0;
+  margin-top: 5px;
+  margin-left: 15px;
 }
 .winnings {
 	color: gold;
@@ -166,4 +168,18 @@ p {
 	padding-top: 90px;
 	text-shadow: 6px 6px black;
 	font: outline;
+}
+
+.reset {
+  color: black;
+	border-radius: 5px;
+	border: solid black 2px;
+	font-family: 'Arvo', serif;
+	font-size: 14px;
+	text-align: center;
+  box-shadow: 3px 3px black;
+  background-color: white;
+  position: absolute;
+  right: 60px;
+  top: -90px;
 }
